@@ -1,0 +1,95 @@
+
+public class Main {
+
+   static String userName ="nandini";
+    static String password = "nan@12";
+   static  int balance=100;
+
+
+    static boolean isValid = false;
+    public static boolean validate(String uName,  String pWord){
+        if(uName.trim().equalsIgnoreCase(userName) && pWord.trim().equals(password)){
+            isValid = true;
+            System.out.println("Login Successfull");
+        }else{
+            System.out.println("Inavalid Credentials");
+            return false;
+
+        }
+        return true;
+    }
+
+    public static void deposit(int amt){
+        if(amt > 0){
+            balance+= amt;
+            System.out.println("Deposit successfull Availabel balance = "+balance);
+        }else{
+            System.out.println("Failed : Balance shd be greater than 0 ");
+        }
+
+    }
+    public static void withdraw(int amt){
+        if(amt < 0 || amt > balance){
+            System.out.println("You dont have sufficient balance = "+balance);
+        }else{
+            balance-= amt;
+            System.out.println("withdraw success , Avaialable balance = "+balance);
+        }
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+
+     System.out.println("Login First to continue with Transaction");
+
+     Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Your username");
+        String uName = scanner.nextLine();
+        System.out.println("Enter Your Password");
+        String pWord = scanner.nextLine();
+
+        boolean res = validate(uName ,pWord );
+
+        if(res){
+
+
+
+            while(true){
+
+                System.out.println("press 1: to Deposit");
+                System.out.println("press 2: to withdraw");
+                System.out.println("press 3: to Check Balance");
+                System.out.println("press 4: to Logout");
+
+                int choice = scanner.nextInt();
+
+                switch(choice){
+
+                    case 1:
+                        System.out.println("Enter Amount to deposit");
+                        int amt = scanner.nextInt();
+                       deposit(amt);
+                       break;
+                    case 2:
+                        System.out.println("Enter Amount to Withdraw");
+                        int Damt = scanner.nextInt();
+                        withdraw(Damt);
+                        break;
+                    case 3:
+                        System.out.println("Your Avaialable Balance = "+balance);
+                        break;
+                    case 4:
+                        return;
+
+                }
+
+            }
+
+        }
+
+    }
+
+        }
